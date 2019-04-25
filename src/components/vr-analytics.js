@@ -6,7 +6,8 @@ AFRAME.registerComponent('vr-analytics', {
     el.addEventListener('enter-vr', function () {
       if (emitted || !AFRAME.utils.device.checkHeadsetConnected() ||
           AFRAME.utils.device.isMobile()) { return; }
-      ga('send', 'event', 'General', 'entervr');
+      //ga('send', 'event', 'General', 'entervr');
+			//document.getElementById('cameraRig').setAttribute('position', {x:0, y:0, z:0});
       emitted = true;
     });
   }

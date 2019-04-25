@@ -48,7 +48,6 @@ AFRAME.registerSystem('painter', {
         }
       }
     };
-
     this.sceneEl.addEventListener('loaded', function() {
       AFRAME.registerInputMappings(mappings);
       AFRAME.currentInputMapping = 'painting';
@@ -77,12 +76,11 @@ AFRAME.registerSystem('painter', {
     if (urlParams.url || urlParams.urljson) {
       var isBinary = urlParams.urljson === undefined;
       this.brushSystem.loadFromUrl(urlParams.url || urlParams.urljson, isBinary);
-      document.getElementById('logo').setAttribute('visible', false);
-      document.getElementById('acamera').setAttribute('orbit-controls', 'position', '0 1.6 3');
-      document.getElementById('apainter-logo').classList.remove('hidden');
+      //document.getElementById('logo').setAttribute('visible', false);
+      //document.getElementById('acamera').setAttribute('orbit-controls', 'position', '0 1.6 3');
+      //document.getElementById('apainter-logo').classList.remove('hidden');
       //document.getElementById('apainter-author').classList.remove('hidden'); // not used yet
     }
-
     if (urlParams.bgcolor !== undefined) {
       document.body.style.backgroundColor = '#' + urlParams.bgcolor;
     }
@@ -98,9 +96,9 @@ AFRAME.registerSystem('painter', {
     if (urlParams.floor !== undefined) {
       this.sceneEl.addEventListener('loaded', function (evt) {
         if (urlParams.floor === '') {
-          document.getElementById('ground').setAttribute('visible', false);
+          //document.getElementById('ground').setAttribute('visible', false);
         } else {
-          document.getElementById('ground').setAttribute('material', 'src', urlParams.floor);
+          //document.getElementById('ground').setAttribute('material', 'src', urlParams.floor);
         }
       });
     }
@@ -109,16 +107,16 @@ AFRAME.registerSystem('painter', {
     var self = this;
     document.addEventListener('stroke-started', function (event) {
       if (!self.startPainting) {
-        var logo = document.getElementById('logo');
+        /*var logo = document.getElementById('logo');
         var mesh = logo.getObject3D('mesh');
-        var tween = new AFRAME.TWEEN.Tween({ alpha: 1.0 })
+        var tween = new TWEEN.Tween({ alpha: 1.0 })
           .to({alpha: 0.0}, 4000)
           .onComplete(function () {
             logo.setAttribute('visible', false);
           })
           .onUpdate(function () {
             mesh.children[0].material.opacity = this.alpha;
-          }).start();
+          }).start();*/
         self.startPainting = true;
       }
     });
@@ -134,7 +132,7 @@ AFRAME.registerSystem('painter', {
         // Clear (c)
         self.brushSystem.clear();
       }
-      if (event.keyCode === 71) {
+      if (event.keyCode === 71) {
         // Export to GTF (g)
         var drawing = document.querySelector('.a-drawing');
         self.sceneEl.systems['gltf-exporter'].export(drawing);

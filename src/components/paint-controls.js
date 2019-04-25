@@ -13,7 +13,7 @@ AFRAME.registerComponent('paint-controls', {
   init: function () {
     var el = this.el;
     var self = this;
-    var highLightTextureUrl = 'assets/images/controller-pressed.png';
+    var highLightTextureUrl = window.ideaspace_site_path + '/public/a-painter/assets/images/controller-pressed.png';
     var tooltips = null;
     this.controller = null;
     this.modelLoaded = false;
@@ -78,9 +78,9 @@ AFRAME.registerComponent('paint-controls', {
       } else if (controllerName === 'oculus-touch-controls') {
         var hand = evt.detail.component.data.hand;
         //el.setAttribute('teleport-controls', {button: hand === 'left' ? 'ybutton' : 'bbutton'});
-        el.setAttribute('obj-model', {obj: 'assets/models/oculus-' + hand + '-controller.obj', mtl: 'https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-' + hand + '.mtl'});
+        el.setAttribute('obj-model', {obj: window.ideaspace_site_path + '/public/a-painter/assets/models/oculus-' + hand + '-controller.obj', mtl: 'https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-' + hand + '.mtl'});
       } else if (controllerName === 'vive-controls') {
-        el.setAttribute('json-model', {src: 'assets/models/controller_vive.json'});
+        el.setAttribute('json-model', {src: window.ideaspace_site_path + '/public/a-painter/assets/models/controller_vive.json'});
       } else { return; }
 
       if (!!tooltips) {
@@ -117,20 +117,20 @@ AFRAME.registerComponent('paint-controls', {
         var tooltips = Array.prototype.slice.call(document.querySelectorAll('[tooltip]'));
         var object = { opacity: 1.0 };
 
-        var tween = new AFRAME.TWEEN.Tween(object)
-          .to({opacity: 0.0}, 1000)
-          .onComplete(function () {
+        //var tween = new TWEEN.Tween(object)
+          //.to({opacity: 0.0}, 1000)
+          //.onComplete(function () {
             tooltips.forEach(function (tooltip) {
               tooltip.setAttribute('visible', false);
             });
-          })
-          .delay(2000)
-          .onUpdate(function () {
-            tooltips.forEach(function (tooltip) {
-              tooltip.setAttribute('tooltip', {opacity: object.opacity});
-            });
-          });
-        tween.start();
+          //})
+          //.delay(2000)
+          //.onUpdate(function () {
+            //tooltips.forEach(function (tooltip) {
+              //tooltip.setAttribute('tooltip', {opacity: object.opacity});
+            //});
+          //});
+        //tween.start();
       }
     });
   },

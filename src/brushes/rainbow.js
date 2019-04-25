@@ -102,6 +102,6 @@
         this.material.uniforms.time.value = timeOffset;
       },
     },
-    {thumbnail:'brushes/thumb_rainbow.png', maxPoints: 3000}
+    {thumbnail:window.ideaspace_site_path + '/public/a-painter/brushes/thumb_rainbow.png', maxPoints: 3000}
   );
 })();

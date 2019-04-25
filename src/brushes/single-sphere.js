@@ -25,5 +25,5 @@ AFRAME.registerBrush('single-sphere',
       return true;
     }
   },
-  {thumbnail: 'brushes/thumb_single_sphere.png', spacing: 0.0}
+  {thumbnail: window.ideaspace_site_path + '/public/a-painter/brushes/thumb_single_sphere.png', spacing: 0.0}
 );

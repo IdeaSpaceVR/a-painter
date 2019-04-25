@@ -24,5 +24,5 @@ AFRAME.registerBrush('cubes',
       return true;
     }
   },
-  {thumbnail: 'brushes/thumb_cubes.gif', spacing: 0.01}
+  {thumbnail: window.ideaspace_site_path + '/public/a-painter/brushes/thumb_cubes.gif', spacing: 0.01}
 );

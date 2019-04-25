@@ -1,9 +1,11 @@
 window.saveAs = require('../vendor/saveas.js').saveAs;
 
+//TWEEN = require('../vendor/Tween.js');
+
 require('./atlas.js');
 require('./dragndrop.js');
 require('./binarymanager.js');
-require('../vendor/OrbitControls.js');
+//require('../vendor/OrbitControls.js');
 require('./sharedbuffergeometrymanager.js');
 require('./sharedbuffergeometry.js');
 
@@ -28,3 +30,14 @@ require('./brushes/spheres.js');
 require('./brushes/cubes.js');
 require('./brushes/rainbow.js');
 require('./brushes/single-sphere.js');
+
+/*var tween = new TWEEN.Tween({ x: 0, y: 0, z: 0 })
+      .to({ x: 1, y: 1, z: 1 }, 100)
+      .onUpdate(function () {
+console.log('in tween');
+          //uiEl.setAttribute('scale', this);
+      })
+      .easing(TWEEN.Easing.Exponential.Out);
+    tween.start();
+
+*/

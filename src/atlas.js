@@ -2,13 +2,13 @@
 const AtlasJSON = require('../assets/images/brush_atlas.json');
 
 function Atlas () {
-  this.map = new THREE.TextureLoader().load('assets/images/' + AtlasJSON.meta.image);
+  this.map = new THREE.TextureLoader().load(window.ideaspace_site_path + '/public/a-painter/assets/images/' + AtlasJSON.meta.image);
 }
 
 Atlas.prototype = {
   getUVConverters: function (filename) {
     if (filename) {
-      filename = filename.replace('brushes/', '');
+      filename = filename.replace(window.ideaspace_site_path + '/public/a-painter/brushes/', '');
       return {
         convertU: function (u) {
           var totalSize = AtlasJSON.meta.size;

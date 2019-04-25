@@ -48,5 +48,5 @@ AFRAME.registerBrush('spheres',
     }
   },
   // Define extra options for this brush
-  {thumbnail: 'brushes/thumb_spheres.gif', spacing: 0.01}
+  {thumbnail: window.ideaspace_site_path + '/public/a-painter/brushes/thumb_spheres.gif', spacing: 0.01}
 );

@@ -73,8 +73,10 @@ AFRAME.registerComponent('ui', {
       }
 
       if (controllerName === 'oculus-touch-controls') {
-        self.uiEl.setAttribute('rotation', '45 0 0');
-        uiEl.setAttribute('position', '0 0.13 -0.08');
+        //self.uiEl.setAttribute('rotation', '45 0 0');
+        self.uiEl.setAttribute('rotation', '0 0 0');
+        //uiEl.setAttribute('position', '0 0.13 -0.08');
+        uiEl.setAttribute('position', '0 0.05 -0.08');
         self.rayAngle = 0;
         el.setAttribute('ui-raycaster', {
           rotation: 0
@@ -542,7 +544,7 @@ AFRAME.registerComponent('ui', {
     this.objects.messageError.visible = false;
     this.objects.messageError.material = this.messagesMaterial;
 
-    var messagesImageUrl = 'assets/images/messages.png';
+    var messagesImageUrl = window.ideaspace_site_path + '/public/a-painter/assets/images/messages.png';
 
     this.el.sceneEl.systems.material.loadTexture(messagesImageUrl, {src: messagesImageUrl}, function (texture) {
       var material = self.messagesMaterial;
@@ -553,13 +555,17 @@ AFRAME.registerComponent('ui', {
     function showMessage (msgObject) {
       msgObject.visible = true;
       var object = { opacity: 0.0 };
-      var tween = new AFRAME.TWEEN.Tween(object)
+
+setTimeout(function() {
+  self.messagesMaterial.opacity = {opacity: 1.0};
+}, 500);
+      /*var tween = new TWEEN.Tween(object)
         .to({opacity: 1.0}, 500)
         .onUpdate(function () {
           self.messagesMaterial.opacity = object.opacity;
         })
         .chain(
-          new AFRAME.TWEEN.Tween(object)
+          new TWEEN.Tween(object)
             .to({opacity: 0.0}, 500)
             .delay(3000)
             .onComplete(function () {
@@ -570,7 +576,12 @@ AFRAME.registerComponent('ui', {
             })
           );
 
-      tween.start();
+      tween.start();*/
+setTimeout(function() {
+  msgObject.visible = false;
+  self.messagesMaterial.opacity = {opacity: 1.0};
+}, 3000);
+
     }
 
     this.el.sceneEl.addEventListener('drawing-upload-completed', function (event) {
@@ -732,13 +743,15 @@ AFRAME.registerComponent('ui', {
     var tween;
     if (!this.closed) { return; }
     this.uiEl.setAttribute('visible', true);
-    tween = new AFRAME.TWEEN.Tween(coords)
-        .to({ x: 1, y: 1, z: 1 }, 100)
-        .onUpdate(function () {
-          uiEl.setAttribute('scale', this);
-        })
-        .easing(AFRAME.TWEEN.Easing.Exponential.Out);
-    tween.start();
+    //tween = new TWEEN.Tween(coords)
+			//.to({ x: 1, y: 1, z: 1 }, 100)
+			//.onUpdate(function () {
+      //    uiEl.setAttribute('scale', this);
+      //})
+			//.easing(TWEEN.Easing.Exponential.Out);
+    //tween.start();
+uiEl.setAttribute('scale', { x: 1, y: 1, z: 1 });
+
     this.el.setAttribute('brush', 'enabled', false);
     this.rayEl.setAttribute('visible', false);
     this.closed = false;
@@ -922,16 +935,19 @@ AFRAME.registerComponent('ui', {
     var coords = { x: 1, y: 1, z: 1 };
     var tween;
     if (this.closed) { return; }
-    tween = new AFRAME.TWEEN.Tween(coords)
-        .to({ x: 0, y: 0, z: 0 }, 100)
-        .onUpdate(function () {
-          uiEl.setAttribute('scale', this);
-        })
-        .onComplete(function () {
-          uiEl.setAttribute('visible', false);
-        })
-        .easing(AFRAME.TWEEN.Easing.Exponential.Out);
-    tween.start();
+    //tween = new TWEEN.Tween(coords)
+      //  .to({ x: 0, y: 0, z: 0 }, 100)
+       // .onUpdate(function () {
+     //     uiEl.setAttribute('scale', this);
+       // })
+        //.onComplete(function () {
+        //  uiEl.setAttribute('visible', false);
+        //})
+        //.easing(TWEEN.Easing.Exponential.Out);
+    //tween.start();
+uiEl.setAttribute('scale', { x: 0, y: 0, z: 0 });
+uiEl.setAttribute('visible', false);
+
     this.el.setAttribute('brush', 'enabled', true);
     this.closed = true;
 
