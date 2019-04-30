@@ -77,7 +77,11 @@ AFRAME.registerComponent('ui', {
         self.uiEl.setAttribute('rotation', '0 0 0');
         //uiEl.setAttribute('position', '0 0.13 -0.08');
         uiEl.setAttribute('position', '0 0.05 -0.08');
-        self.rayAngle = 0;
+        //self.rayAngle = 0;
+
+				/* workaround: controller rotation wrong */
+        self.rayAngle = 45; 
+
         el.setAttribute('ui-raycaster', {
           rotation: 0
         });
