@@ -1449,7 +1449,9 @@ AFRAME.registerSystem('painter', {
   save: function () {
     var dataviews = this.brushSystem.getBinary();
     var blob = new Blob(dataviews, {type: 'application/octet-binary'});
-    saveAs(blob, 'demo.apa');
+    //saveAs(blob, 'demo.apa');
+		window.painting = blob;
+		window.insert_btn_ref.show();
   },
   upload: function (success, error) {
     this.sceneEl.emit('drawing-upload-started');
@@ -2216,7 +2218,8 @@ AFRAME.registerComponent('ui', {
       }
       case name === 'save': {
         if (!this.pressedObjects[name]) {
-          this.el.sceneEl.systems.painter.upload();
+          //this.el.sceneEl.systems.painter.upload();
+          this.el.sceneEl.systems.painter.save();
           this.playSound('ui_click1');
         }
         break;

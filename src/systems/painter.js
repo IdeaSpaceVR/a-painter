@@ -192,7 +192,9 @@ AFRAME.registerSystem('painter', {
   save: function () {
     var dataviews = this.brushSystem.getBinary();
     var blob = new Blob(dataviews, {type: 'application/octet-binary'});
-    saveAs(blob, 'demo.apa');
+    //saveAs(blob, 'demo.apa');
+		window.painting = blob;
+		window.insert_btn_ref.show();
   },
   upload: function (success, error) {
     this.sceneEl.emit('drawing-upload-started');
