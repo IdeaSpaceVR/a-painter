@@ -19,11 +19,11 @@ AFRAME.registerComponent('paint-controls', {
     this.modelLoaded = false;
 
 		/* workaround: controller roation wrong */
-		el.object3D.children.forEach(function(obj) {
+		/*el.object3D.children.forEach(function(obj) {
 			if (obj.el.className == 'oculus-tooltips') {
 				obj.rotateX(-Math.PI / 4);
 			}	
-		});
+		});*/
 
     this.onModelLoaded = this.onModelLoaded.bind(this);
     el.addEventListener('model-loaded', this.onModelLoaded);
@@ -204,9 +204,9 @@ AFRAME.registerComponent('paint-controls', {
     this.changeBrushColor(this.el.components.brush.color);
 
 		/* workaround: controller rotation wrong */
-		if (evt.detail.model.el.controller == 'oculus-touch-controls') {
+		/*if (evt.detail.model.el.controller == 'oculus-touch-controls') {
 			controllerObject3D.rotateX(-Math.PI / 4);
-		}
+		}*/
 
   },
 
